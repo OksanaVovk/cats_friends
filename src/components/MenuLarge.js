@@ -1,12 +1,13 @@
-import { useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import StyledMenu from "./StyledMenu";
-import { Button, MenuItem, MenuList, Link } from "@mui/material";
+import { useState } from 'react';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import StyledMenu from './StyledMenu';
+import { Link as RouterLink } from 'react-router-dom';
+import { Button, MenuItem, MenuList, Link } from '@mui/material';
 
 const MenuLarge = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -15,22 +16,26 @@ const MenuLarge = () => {
   return (
     <MenuList
       sx={{
-        display: { xs: "none", md: "flex" },
-        flexDirection: "row",
+        display: { xs: 'none', md: 'flex' },
+        flexDirection: 'row',
       }}
     >
       <MenuItem>
-        <Link>HOME</Link>
+        <Link component={RouterLink} to="/">
+          HOME
+        </Link>
       </MenuItem>
       <MenuItem>
-        <Link>VOLONTEER</Link>
+        <Link component={RouterLink} to="volonteer">
+          VOLONTEER
+        </Link>
       </MenuItem>
       <MenuItem>
         <Button
           id="demo-customized-button"
-          aria-controls={isOpen ? "demo-customized-menu" : undefined}
+          aria-controls={isOpen ? 'demo-customized-menu' : undefined}
           aria-haspopup="true"
-          aria-expanded={isOpen ? "true" : undefined}
+          aria-expanded={isOpen ? 'true' : undefined}
           variant="contained"
           disableElevation
           onClick={handleClick}
@@ -38,8 +43,8 @@ const MenuLarge = () => {
           sx={{
             fontSize: 14,
             fontWeight: 400,
-            backgroundColor: "transparent",
-            color: (theme) => theme.palette.dark.main,
+            backgroundColor: 'transparent',
+            color: theme => theme.palette.dark.main,
           }}
         >
           Stories
@@ -47,22 +52,28 @@ const MenuLarge = () => {
         <StyledMenu
           id="demo-customized-menu"
           MenuListProps={{
-            "aria-labelledby": "demo-customized-button",
+            'aria-labelledby': 'demo-customized-button',
           }}
           anchorEl={anchorEl}
           open={isOpen}
           onClick={handleClose}
         >
           <MenuItem onClick={handleClose} disableRipple>
-            <Link>Blog</Link>
+            <Link component={RouterLink} to="blog">
+              Blog
+            </Link>
           </MenuItem>
           <MenuItem onClick={handleClose} disableRipple>
-            <Link>Podcast</Link>
+            <Link component={RouterLink} to="podcast">
+              Podcast
+            </Link>
           </MenuItem>
         </StyledMenu>
       </MenuItem>
       <MenuItem>
-        <Link>LOGIN</Link>
+        <Link component={RouterLink} to="login">
+          LOGIN
+        </Link>
       </MenuItem>
     </MenuList>
   );

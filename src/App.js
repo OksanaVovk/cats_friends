@@ -1,20 +1,23 @@
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./styles";
-import { Box } from "@mui/material";
-import Header from "./components/Header";
-import Banner from "./components/Banner";
-import Content from "./components/Content";
-import Footer from "./components/Footer";
+import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { SharedLayout } from 'components/SharedLayout';
+import theme from './styles';
+
+const MainPage = lazy(() => import('./pages/MainPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box>
-        <Header />
-        <Banner />
-        <Content />
-        <Footer />
-      </Box>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<MainPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }
