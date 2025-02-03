@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Box } from '@mui/material';
+import Loader from 'components/Loader';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 
@@ -7,10 +9,12 @@ export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
-      <Footer />
+      <Box>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+          <Footer />
+        </Suspense>
+      </Box>
     </>
   );
 };

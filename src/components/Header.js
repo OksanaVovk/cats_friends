@@ -12,6 +12,7 @@ const Header = () => {
     <AppBar
       sx={{
         backgroundColor: theme => theme.palette.body_bg.main,
+        position: 'static',
       }}
     >
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>

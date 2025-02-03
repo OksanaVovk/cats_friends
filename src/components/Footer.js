@@ -1,37 +1,42 @@
-import { Box, Typography, useMediaQuery } from "@mui/material";
-import SocialNetworks from "./SocialNetworks";
-import IconNavigation from "./IconNavigation";
+import { Box, Typography, useMediaQuery } from '@mui/material';
+import SocialNetworks from './SocialNetworks';
+import IconNavigation from './IconNavigation';
 const Footer = () => {
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme => theme.breakpoints.down('md'));
 
   return (
-    <Box sx={{ backgroundColor: (theme) => theme.palette.black.main }}>
+    <Box
+      sx={{
+        backgroundColor: theme => theme.palette.black.main,
+        flexShrink: 0,
+      }}
+    >
       <Box
         sx={{
-          color: (theme) => theme.palette.light.main,
-          display: "flex",
-          flexDirection: { xs: "column", lg: "row" },
-          alignItems: "start",
-          justifyContent: "space-between",
-          padding: { xs: "30px", md: "50px" },
-          borderBottom: (theme) => `solid 1px ${theme.palette.light.main}`,
+          color: theme => theme.palette.light.main,
+          display: 'flex',
+          flexDirection: { xs: 'column', lg: 'row' },
+          alignItems: 'start',
+          justifyContent: 'space-between',
+          padding: { xs: '30px', md: '50px' },
+          borderBottom: theme => `solid 1px ${theme.palette.light.main}`,
         }}
       >
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            width: { xs: "100%", lg: "50%" },
-            marginRight: { lg: "10%" },
-            marginBottom: { xs: "35px", lg: 0 },
+            display: 'flex',
+            flexDirection: 'column',
+            width: { xs: '100%', lg: '50%' },
+            marginRight: { lg: '10%' },
+            marginBottom: { xs: '35px', lg: 0 },
           }}
         >
           <Typography
             variant="h6"
             sx={{
-              textTransform: "uppercase",
-              fontSize: "1rem",
-              marginBottom: "10px",
+              textTransform: 'uppercase',
+              fontSize: '1rem',
+              marginBottom: '10px',
             }}
           >
             About us
@@ -39,7 +44,7 @@ const Footer = () => {
           <Typography
             variant="body2"
             sx={{
-              marginBottom: "15px",
+              marginBottom: '15px',
             }}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
@@ -50,26 +55,26 @@ const Footer = () => {
         </Box>
         <Box
           sx={{
-            display: { xs: "block", sm: "flex" },
-            flexDirection: "row",
-            alignItems: "start",
-            width: { xs: "100%", lg: "50%" },
+            display: { xs: 'block', sm: 'flex' },
+            flexDirection: 'row',
+            alignItems: 'start',
+            width: { xs: '100%', lg: '50%' },
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              marginBottom: { xs: "35px", sm: 0 },
-              marginRight: { sm: "55%", lg: "30%" },
+              display: 'flex',
+              flexDirection: 'column',
+              marginBottom: { xs: '35px', sm: 0 },
+              marginRight: { sm: '55%', lg: '30%' },
             }}
           >
             <Typography
               variant="h6"
               sx={{
-                textTransform: "uppercase",
-                fontSize: "1rem",
-                marginBottom: "15px",
+                textTransform: 'uppercase',
+                fontSize: '1rem',
+                marginBottom: '15px',
               }}
             >
               Information
@@ -77,7 +82,7 @@ const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                marginBottom: "10px",
+                marginBottom: '10px',
               }}
             >
               Lorem ipsum
@@ -85,7 +90,7 @@ const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                marginBottom: "10px",
+                marginBottom: '10px',
               }}
             >
               Privacy & Policy
@@ -94,16 +99,16 @@ const Footer = () => {
           </Box>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <Typography
               variant="h6"
               sx={{
-                textTransform: "uppercase",
-                fontSize: "1rem",
-                marginBottom: "15px",
+                textTransform: 'uppercase',
+                fontSize: '1rem',
+                marginBottom: '15px',
               }}
             >
               My account
@@ -111,7 +116,7 @@ const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                marginBottom: "10px",
+                marginBottom: '10px',
               }}
             >
               Initiatives and projects
@@ -119,7 +124,7 @@ const Footer = () => {
             <Typography
               variant="body2"
               sx={{
-                marginBottom: "10px",
+                marginBottom: '10px',
               }}
             >
               Favorite animals
@@ -128,7 +133,7 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-      {isMobile && <IconNavigation color={"primary"} />}
+      {isMobile && <IconNavigation color={'primary'} />}
     </Box>
   );
 };
