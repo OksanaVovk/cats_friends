@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import storage from 'redux-persist/lib/storage';
+//import storage from 'redux-persist/lib/storage';
 
 import {
-  // persistReducer,
+  //persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -17,16 +17,24 @@ import {
 // import productsReducer from './products/products-slice';
 // import { diaryReducer } from './diary/diarySlice';
 import { catsReducer } from './cats/slice';
+import { volonteersReducer } from './volonteers/slice';
 
 // const authPersistConfig = {
 //   key: 'auth',
 //   storage,
 // };
 
+// const catsPersistConfig = {
+//   key: 'cats',
+//   storage,
+// };
+
 export const store = configureStore({
   reducer: {
     // auth: persistReducer(authPersistConfig, authReducer),
+    // cats: (persistReducer(catsPersistConfig), catsReducer),
     cats: catsReducer,
+    volonteers: volonteersReducer,
   },
 
   middleware: getDefaultMiddleware => [

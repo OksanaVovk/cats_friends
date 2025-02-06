@@ -11,7 +11,9 @@ export const SharedLayout = () => {
       <Header />
       <Box>
         <Suspense fallback={<Loader />}>
-          <Outlet />
+          <Box sx={{ minHeight: '100vh' }}>
+            <Outlet />
+          </Box>
           <Footer />
         </Suspense>
       </Box>
