@@ -12,6 +12,9 @@ import { catsSelectors } from './redux/cats/catsSelectors';
 const MainPage = lazy(() => import('./pages/MainPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const VolonteersPage = lazy(() => import('./pages/VolonteersPage.js'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +32,9 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
+          <Route path="volonteers" element={<VolonteersPage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </ThemeProvider>

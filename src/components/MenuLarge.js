@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import StyledMenu from './StyledMenu';
-import { Link as RouterLink } from 'react-router-dom';
 import { Button, MenuItem, MenuList, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const MenuLarge = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+
   const isOpen = Boolean(anchorEl);
+
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <MenuList
       sx={{
@@ -26,7 +30,7 @@ const MenuLarge = () => {
         </Link>
       </MenuItem>
       <MenuItem>
-        <Link component={RouterLink} to="volonteer">
+        <Link component={RouterLink} to="volonteers">
           VOLONTEER
         </Link>
       </MenuItem>
@@ -78,4 +82,5 @@ const MenuLarge = () => {
     </MenuList>
   );
 };
+
 export default MenuLarge;
