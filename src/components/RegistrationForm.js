@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registerSchema } from 'schemas/register';
+import ErrorMessage from './ErrorMessage';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,20 +39,22 @@ const useStyles = makeStyles(theme => ({
 
 function RegistrationForm() {
   const classes = useStyles();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // Тут можна додати логіку для аутентифікації
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(registerSchema) });
+
+  const onSubmit = data => {
+    console.log('Email:', data.email);
+    console.log('Username:', data.name);
+    console.log('Password:', data.password);
   };
 
   return (
     <Box className={classes.root}>
-      <form onSubmit={handleSubmit} className={classes.form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <Typography variant="h5" className={classes.title} sx={{}}>
           Register
         </Typography>
@@ -58,18 +63,18 @@ function RegistrationForm() {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
+          {...register('name')}
         />
+        <ErrorMessage message={errors.name?.message} />
 
         <TextField
           label="Email*"
           variant="outlined"
           fullWidth
           margin="normal"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          {...register('email')}
         />
+        <ErrorMessage message={errors.email?.message} />
 
         <TextField
           label="Password*"
@@ -77,9 +82,9 @@ function RegistrationForm() {
           fullWidth
           margin="normal"
           type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
+          {...register('password')}
         />
+        <ErrorMessage message={errors.password?.message} />
 
         <Button
           type="submit"
