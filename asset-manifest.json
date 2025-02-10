@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/cats_friends/static/css/main.753e198b.css",
-    "main.js": "/cats_friends/static/js/main.9a31bdc2.js",
+    "main.js": "/cats_friends/static/js/main.40f3977f.js",
     "static/js/174.69b8ad87.chunk.js": "/cats_friends/static/js/174.69b8ad87.chunk.js",
-    "static/js/419.8ca24f05.chunk.js": "/cats_friends/static/js/419.8ca24f05.chunk.js",
-    "static/js/427.22a4f891.chunk.js": "/cats_friends/static/js/427.22a4f891.chunk.js",
+    "static/js/226.8142453c.chunk.js": "/cats_friends/static/js/226.8142453c.chunk.js",
+    "static/js/783.77cf0454.chunk.js": "/cats_friends/static/js/783.77cf0454.chunk.js",
     "static/js/326.8b9e07c4.chunk.js": "/cats_friends/static/js/326.8b9e07c4.chunk.js",
     "static/js/943.517c3bbe.chunk.js": "/cats_friends/static/js/943.517c3bbe.chunk.js",
     "static/js/47.0d661a4b.chunk.js": "/cats_friends/static/js/47.0d661a4b.chunk.js",
-    "static/js/797.60ba128f.chunk.js": "/cats_friends/static/js/797.60ba128f.chunk.js",
+    "static/js/848.825830e5.chunk.js": "/cats_friends/static/js/848.825830e5.chunk.js",
     "index.html": "/cats_friends/index.html",
     "main.753e198b.css.map": "/cats_friends/static/css/main.753e198b.css.map",
-    "main.9a31bdc2.js.map": "/cats_friends/static/js/main.9a31bdc2.js.map",
+    "main.40f3977f.js.map": "/cats_friends/static/js/main.40f3977f.js.map",
     "174.69b8ad87.chunk.js.map": "/cats_friends/static/js/174.69b8ad87.chunk.js.map",
-    "419.8ca24f05.chunk.js.map": "/cats_friends/static/js/419.8ca24f05.chunk.js.map",
-    "427.22a4f891.chunk.js.map": "/cats_friends/static/js/427.22a4f891.chunk.js.map",
+    "226.8142453c.chunk.js.map": "/cats_friends/static/js/226.8142453c.chunk.js.map",
+    "783.77cf0454.chunk.js.map": "/cats_friends/static/js/783.77cf0454.chunk.js.map",
     "326.8b9e07c4.chunk.js.map": "/cats_friends/static/js/326.8b9e07c4.chunk.js.map",
     "943.517c3bbe.chunk.js.map": "/cats_friends/static/js/943.517c3bbe.chunk.js.map",
     "47.0d661a4b.chunk.js.map": "/cats_friends/static/js/47.0d661a4b.chunk.js.map",
-    "797.60ba128f.chunk.js.map": "/cats_friends/static/js/797.60ba128f.chunk.js.map"
+    "848.825830e5.chunk.js.map": "/cats_friends/static/js/848.825830e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.753e198b.css",
-    "static/js/main.9a31bdc2.js"
+    "static/js/main.40f3977f.js"
   ]
 }
