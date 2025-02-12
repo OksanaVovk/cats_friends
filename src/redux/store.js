@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-//import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 
 import {
-  //persistReducer,
+  persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -12,27 +12,18 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-// import authReducer from './auth/auth-slice';
-// import { bloodDietReducer } from './bloodDiet/slice';
-// import productsReducer from './products/products-slice';
-// import { diaryReducer } from './diary/diarySlice';
 import { catsReducer } from './cats/slice';
 import { volonteersReducer } from './volonteers/slice';
+import authReducer from './auth/slice';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-// };
-
-// const catsPersistConfig = {
-//   key: 'cats',
-//   storage,
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authReducer),
-    // cats: (persistReducer(catsPersistConfig), catsReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
     cats: catsReducer,
     volonteers: volonteersReducer,
   },

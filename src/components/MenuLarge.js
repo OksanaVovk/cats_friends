@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authSelector } from '../redux/auth/authSelectors';
+import authOperations from '../redux/auth/operations';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import StyledMenu from './StyledMenu';
 import { Button, MenuItem, MenuList, Link } from '@mui/material';
@@ -7,6 +11,9 @@ import { Link as RouterLink } from 'react-router-dom';
 const MenuLarge = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const isLoggedIn = useSelector(authSelector.selectIsLoggedIn);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isOpen = Boolean(anchorEl);
 
   const handleClick = event => {
@@ -15,6 +22,11 @@ const MenuLarge = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const onLogOutClick = async () => {
+    await dispatch(authOperations.logOut());
+    navigate('/', { replace: true });
   };
 
   return (
@@ -74,11 +86,18 @@ const MenuLarge = () => {
           </MenuItem>
         </StyledMenu>
       </MenuItem>
-      <MenuItem>
-        <Link component={RouterLink} to="login">
-          LOGIN
-        </Link>
-      </MenuItem>
+
+      {!isLoggedIn ? (
+        <MenuItem>
+          <Link component={RouterLink} to="login">
+            LOGIN
+          </Link>
+        </MenuItem>
+      ) : (
+        <MenuItem>
+          <Link onClick={onLogOutClick}>LOGOUT</Link>
+        </MenuItem>
+      )}
     </MenuList>
   );
 };
