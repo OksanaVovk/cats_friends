@@ -1,4 +1,7 @@
 import { TextField, Button, Box, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from '../redux/auth/operations';
 import { makeStyles } from '@mui/styles';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -45,9 +48,14 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onSubmit = data => {
-    console.log('Email:', data.email);
-    console.log('Password:', data.password);
+    dispatch(
+      authOperations.logIn({ email: data.email, password: data.password })
+    );
+    navigate('/', { replace: true });
   };
 
   return (

@@ -19,3 +19,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MuiAccordionSummary-root {
+  padding: 0 !important;
+  min-height: unset !important;
+}
