@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+//import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react';
-import { store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
 import './index.css';
@@ -10,11 +11,11 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <PersistGate loading={<div>Loading...</div>} persistor={persistor}> */}
-      <BrowserRouter basename="/cats_friends">
-        <App />
-      </BrowserRouter>
-      {/* </PersistGate> */}
+      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+        <BrowserRouter basename="/cats_friends">
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

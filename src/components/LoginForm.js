@@ -1,6 +1,8 @@
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelector } from '../redux/auth/authSelectors';
 import authOperations from '../redux/auth/operations';
 import { makeStyles } from '@mui/styles';
 import { useForm } from 'react-hook-form';
@@ -41,6 +43,9 @@ const useStyles = makeStyles(theme => ({
 
 function LoginForm() {
   const classes = useStyles();
+  const isLoggedIn = useSelector(authSelector.selectIsLoggedIn);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -48,14 +53,16 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/', { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
 
   const onSubmit = data => {
     dispatch(
       authOperations.logIn({ email: data.email, password: data.password })
     );
-    navigate('/', { replace: true });
   };
 
   return (
