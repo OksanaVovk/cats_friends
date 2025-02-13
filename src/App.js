@@ -8,6 +8,7 @@ import { SharedLayout } from 'components/SharedLayout';
 import theme from './styles';
 import Loader from 'components/Loader';
 import { catsSelectors } from './redux/cats/catsSelectors';
+import { Toaster } from 'react-hot-toast';
 
 const MainPage = lazy(() => import('./pages/MainPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -27,6 +28,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {isLoading && <Loader />}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            zIndex: 9999,
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />

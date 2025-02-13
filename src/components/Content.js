@@ -68,9 +68,8 @@ const Content = () => {
           variant="masonry"
         >
           {itemData.map(item => (
-            <ImageListItem>
+            <ImageListItem key={item._id}>
               <HashLink
-                key={item._id}
                 smooth
                 to={`/blog#${item._id}`}
                 style={{
