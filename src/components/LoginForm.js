@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -42,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginForm() {
+  const [loginError, setLoginError] = useState('');
   const classes = useStyles();
   const isLoggedIn = useSelector(authSelector.selectIsLoggedIn);
   const navigate = useNavigate();
@@ -50,6 +52,7 @@ function LoginForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
@@ -59,14 +62,23 @@ function LoginForm() {
     }
   }, [isLoggedIn, navigate]);
 
-  const onSubmit = data => {
-    dispatch(
-      authOperations.logIn({ email: data.email, password: data.password })
-    );
+  const onSubmit = async data => {
+    try {
+      await dispatch(authOperations.logIn(data)).unwrap();
+      reset();
+      setLoginError('');
+    } catch (error) {
+      setLoginError(error || 'Login failed. Please try again.');
+    }
   };
 
   return (
     <Box className={classes.root}>
+      {loginError && (
+        <Typography sx={{ color: 'red', marginBottom: '30px' }}>
+          {loginError}
+        </Typography>
+      )}
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <Typography variant="h5" className={classes.title}>
           Log in

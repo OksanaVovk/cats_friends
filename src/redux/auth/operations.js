@@ -29,14 +29,15 @@ export const register = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await API.get('auth/logout');
+    token.unset();
   } catch (error) {
     toast.error(`Logout failed: ${error.message}`, {
       position: 'top-right',
     });
+    token.unset();
+    thunkAPI.dispatch(authActions.resetAuth());
     return thunkAPI.rejectWithValue(error.message);
   }
-  token.unset();
-  thunkAPI.dispatch(authActions.resetAuth());
 });
 
 export const logIn = createAsyncThunk(
@@ -47,9 +48,12 @@ export const logIn = createAsyncThunk(
       token.set(data.data.token);
       return data;
     } catch (error) {
-      toast.error(`Login failed: ${error.message}`, {
-        position: 'top-right',
-      });
+      toast.error(
+        `Login failed: ${error.message}. ${error.response.data.message}`,
+        {
+          position: 'top-right',
+        }
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
