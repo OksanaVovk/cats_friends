@@ -22,14 +22,15 @@ const authSlice = createSlice({
     builder
       .addCase(authOperations.register.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload.data.user;
         state.token = action.payload.data.token;
         state.isLoggedIn = true;
       })
+
       .addCase(authOperations.logOut.fulfilled, state => {
         state.user = { name: null, email: null, favorite: [] };
         state.token = null;

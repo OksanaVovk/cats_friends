@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import authOperations from '../redux/auth/operations';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useForm } from 'react-hook-form';
@@ -39,21 +43,35 @@ const useStyles = makeStyles(theme => ({
 
 function RegistrationForm() {
   const classes = useStyles();
+  const [registerError, setRegisterError] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = data => {
-    console.log('Email:', data.email);
-    console.log('Username:', data.name);
-    console.log('Password:', data.password);
+  const onSubmit = async data => {
+    try {
+      await dispatch(authOperations.register(data)).unwrap();
+      reset();
+      setRegisterError('');
+      navigate('/login', { replace: true });
+    } catch (error) {
+      setRegisterError(error || 'Register failed. Please try again.');
+    }
   };
 
   return (
     <Box className={classes.root}>
+      {registerError && (
+        <Typography sx={{ color: 'red', marginBottom: '30px' }}>
+          {registerError}
+        </Typography>
+      )}
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <Typography variant="h5" className={classes.title} sx={{}}>
           Register
