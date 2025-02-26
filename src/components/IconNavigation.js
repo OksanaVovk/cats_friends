@@ -24,7 +24,7 @@ const IconNavigation = ({ color }) => {
           paddingRight: { lg: '25px' },
           justifyContent: 'center',
         }}
-        onClick={() => navigate('/favorite', { replace: true })}
+        onClick={() => navigate('/favorite')}
       >
         <FavoriteIcon
           sx={{
@@ -44,9 +44,7 @@ const IconNavigation = ({ color }) => {
           justifyContent: 'center',
         }}
         onClick={
-          isLoggedIn
-            ? () => navigate('/account', { replace: true })
-            : () => navigate('/login', { replace: true })
+          isLoggedIn ? () => navigate('/account') : () => navigate('/login')
         }
       >
         <PersonIcon
@@ -65,7 +63,7 @@ const IconNavigation = ({ color }) => {
           paddingRight: { lg: '25px' },
           justifyContent: 'center',
         }}
-        onClick={() => navigate('/info', { replace: true })}
+        onClick={() => navigate('/info')}
       >
         <NotificationsIcon
           sx={{
