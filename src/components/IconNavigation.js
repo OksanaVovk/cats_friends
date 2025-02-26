@@ -43,8 +43,8 @@ const IconNavigation = ({ color }) => {
           paddingRight: { lg: '25px' },
           justifyContent: 'center',
         }}
-        onClick={
-          isLoggedIn ? () => navigate('/account') : () => navigate('/login')
+        onClick={() =>
+          navigate(isLoggedIn ? '/account' : '/login', { replace: true })
         }
       >
         <PersonIcon
