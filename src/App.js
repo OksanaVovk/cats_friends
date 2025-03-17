@@ -8,8 +8,6 @@ import { lazy } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { SharedLayout } from 'components/SharedLayout';
 import theme from './styles';
-import Loader from 'components/Loader';
-import { catsSelectors } from './redux/cats/catsSelectors';
 import { Toaster } from 'react-hot-toast';
 
 const MainPage = lazy(() => import('./pages/MainPage'));
@@ -37,11 +35,8 @@ function App() {
     dispatch(getCats());
   }, [dispatch]);
 
-  const isLoading = useSelector(catsSelectors.selectCatsIsLoading);
-
   return (
     <ThemeProvider theme={theme}>
-      {isLoading && <Loader />}
       <Toaster
         position="top-right"
         toastOptions={{
