@@ -8,7 +8,8 @@ export const apiAxios = axios.create({
     'Content-type': 'application/json',
   },
 
-  baseURL: 'https://cats-friends-backend.onrender.com/api/',
+  // baseURL: 'https://cats-friends-backend.onrender.com/api/',
+  baseURL: '/api/',
 });
 
 export const apiToken = {

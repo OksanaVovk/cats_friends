@@ -10,7 +10,7 @@ const Account = () => {
   const avatarUrlServer =
     avatarUrl?.startsWith('http') || avatarUrl?.includes('gravatar.com')
       ? avatarUrl
-      : `${url}${avatarUrl}`;
+      : `${url.replace(/\/$/, '')}${avatarUrl}`;
 
   return (
     <>
