@@ -10,8 +10,9 @@ import StyledImageItemBar from './StyledImageItemBar';
 import StyledIconButton from './StyledIconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useRef } from 'react';
+import { Skeleton } from '@mui/material';
 
-const ContentItem = ({ img, title, id }) => {
+const ContentItem = ({ img, title, id, isLoading }) => {
   const isLoggedIn = useSelector(authSelector.selectIsLoggedIn);
   const user = useSelector(authSelector.selectUser);
   const likeButtonRef = useRef(null);
@@ -42,6 +43,10 @@ const ContentItem = ({ img, title, id }) => {
       likeButtonRef.current.classList.toggle('active');
     }
   };
+
+  if (isLoading) {
+    return <Skeleton variant="rectangular" width={164} height={164} />;
+  }
 
   return (
     <ImageListItem key={id}>

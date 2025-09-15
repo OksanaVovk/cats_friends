@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const url = 'https://cats-friends-backend.onrender.com/';
+// export const url = 'http://localhost:5001/';
 
 export const apiAxios = axios.create({
   withCredentials: true,
@@ -8,8 +9,8 @@ export const apiAxios = axios.create({
     'Content-type': 'application/json',
   },
 
-  // baseURL: 'https://cats-friends-backend.onrender.com/api/',
-  baseURL: '/api/',
+  baseURL: 'https://cats-friends-backend.onrender.com/api/',
+  // baseURL: 'http://localhost:5001/api/',
 });
 
 export const apiToken = {

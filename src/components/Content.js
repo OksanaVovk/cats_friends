@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { catsSelectors } from '../redux/cats/catsSelectors';
 import ContentItem from './ContentItem';
-import Loader from './Loader';
 import { ImageList, Typography, useMediaQuery, Box } from '@mui/material';
 
 const Content = () => {
@@ -42,7 +41,6 @@ const Content = () => {
       >
         Waiting for their owners
       </Typography>
-      {isLoading && <Loader />}
       {isError ? (
         <Typography gutterBottom variant="h5">
           Request error
@@ -60,6 +58,7 @@ const Content = () => {
               img={item.img}
               title={item.title}
               id={item._id}
+              isLoading={isLoading}
             />
           ))}
         </ImageList>
