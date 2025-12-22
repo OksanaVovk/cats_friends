@@ -24,3 +24,7 @@ code {
   padding: 0 !important;
   min-height: unset !important;
 }
+
+div {
+  box-sizing: border-box;
+}

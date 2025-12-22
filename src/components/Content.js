@@ -29,6 +29,8 @@ const Content = () => {
         flexDirection: 'column',
         alignItems: 'center',
         flex: 1,
+        width: '100%',
+        maxWidth: '1700px',
       }}
     >
       <Typography

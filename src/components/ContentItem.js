@@ -44,12 +44,16 @@ const ContentItem = ({ img, title, id, isLoading }) => {
     }
   };
 
-  if (isLoading) {
-    return <Skeleton variant="rectangular" width={164} height={164} />;
-  }
-
   return (
     <ImageListItem key={id}>
+      {isLoading && (
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          height="200px"
+          animation="wave"
+        />
+      )}
       <HashLink
         smooth
         to={`/blog#${id}`}

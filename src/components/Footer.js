@@ -14,6 +14,11 @@ const Footer = () => {
       sx={{
         backgroundColor: theme => theme.palette.black.main,
         flexShrink: 0,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
       }}
     >
       <Box
@@ -24,6 +29,8 @@ const Footer = () => {
           alignItems: 'start',
           justifyContent: 'space-between',
           padding: { xs: '30px', md: '50px' },
+          width: '100%',
+          maxWidth: '1700px',
           borderBottom: theme => `solid 1px ${theme.palette.light.main}`,
         }}
       >

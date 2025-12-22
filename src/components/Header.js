@@ -17,9 +17,21 @@ const Header = () => {
       sx={{
         backgroundColor: theme => theme.palette.body_bg.main,
         position: 'relative',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '100%',
+          maxWidth: '1700px',
+        }}
+      >
         {isMobile && <MenuSmall />}
 
         <Link
