@@ -20,6 +20,8 @@ const Content = () => {
   const isError = useSelector(catsSelectors.selectCatsError);
   const isLoading = useSelector(catsSelectors.selectCatsIsLoading);
 
+  const skeletonItems = Array.from({ length: 9 });
+
   return (
     <Box
       sx={{
@@ -54,12 +56,12 @@ const Content = () => {
           cols={getCols()}
           variant="masonry"
         >
-          {itemData.map(item => (
+          {(isLoading ? skeletonItems : itemData).map((item, index) => (
             <ContentItem
-              key={item._id}
-              img={item.img}
-              title={item.title}
-              id={item._id}
+              key={item?._id || index}
+              img={item?.img}
+              title={item?.title}
+              id={item?._id}
               isLoading={isLoading}
             />
           ))}

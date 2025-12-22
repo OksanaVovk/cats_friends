@@ -7,12 +7,27 @@ import {
   CardMedia,
   List,
 } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { catsSelectors } from '../redux/cats/catsSelectors';
 
 const Blog = () => {
   const itemData = useSelector(catsSelectors.selectCats);
   const isError = useSelector(catsSelectors.selectCatsError);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!itemData.length) return;
+
+    const id = location.hash.slice(1);
+    if (!id) return;
+
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [itemData, location.hash]);
   return (
     <>
       {isError ? (

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import authOperations from '../redux/auth/operations';
 import { authSelector } from '../redux/auth/authSelectors';
-import { HashLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { ImageListItem } from '@mui/material';
 import StyledImageItemBar from './StyledImageItemBar';
@@ -54,8 +54,7 @@ const ContentItem = ({ img, title, id, isLoading }) => {
           animation="wave"
         />
       )}
-      <HashLink
-        smooth
+      <Link
         to={`/blog#${id}`}
         style={{
           textDecoration: 'none',
@@ -73,7 +72,7 @@ const ContentItem = ({ img, title, id, isLoading }) => {
             display: 'block',
           }}
         />
-      </HashLink>
+      </Link>
 
       <StyledImageItemBar
         title={title}
